@@ -75,46 +75,7 @@ a:hover {
   <button onclick="pickLunch()">추천 받기</button>
   <div id="result"></div>
 
-  <script>
-    let restaurants = [];
+  <script src="script.js"></script>
 
-    // JSON 불러오기
-    fetch('restaurants.json')
-      .then(response => response.json())
-      .then(data => {
-        restaurants = data;
-      });
-
-      let lastPickedIndex = -1; // 직전 선택된 인덱스 저장
-
-      function pickLunch() {
-        document.getElementById("disclaimer").style.display = "none";
-
-  if (restaurants.length === 0) {
-    document.getElementById("result").innerText = "식당 목록을 불러오는 중입니다...";
-    return;
-  }
-
-  let random;
-  do {
-    random = Math.floor(Math.random() * restaurants.length);
-  } while (random === lastPickedIndex && restaurants.length > 1);
-
-  const picked = restaurants[random];
-  lastPickedIndex = random;
-
-  let formattedComment = picked.comment.replace(/\n/g, "<br>");
-  let linkHTML = picked.link ? `<br><a href="${picked.link}" target="_blank">📍 링크 보기</a>` : "";
-
-  document.getElementById("result").innerHTML = `
-    <strong>${picked.name}</strong><br>
-    <em>${formattedComment}</em>
-    ${linkHTML}
-  `;
-}
-
-
-
-  </script>
 </body>
 </html>
