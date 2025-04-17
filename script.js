@@ -1,7 +1,5 @@
 let restaurants = [];
-let lastPickedIndex = -1;
-
-// 연타 방지용 변수
+let restaurantQueue = [];
 let clickCount = 0;
 let clickTimer = null;
 
@@ -10,7 +8,18 @@ fetch('restaurants.json')
   .then(response => response.json())
   .then(data => {
     restaurants = data;
+    shuffleQueue(); // 처음 로딩 시 셔플 큐 생성
   });
+
+// Fisher-Yates 셔플로 queue 생성
+function shuffleQueue() {
+  restaurantQueue = [...restaurants];
+
+  for (let i = restaurantQueue.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [restaurantQueue[i], restaurantQueue[j]] = [restaurantQueue[j], restaurantQueue[i]];
+  }
+}
 
 // 연타 방지 로직
 function handleRapidClick() {
@@ -39,21 +48,14 @@ function pickLunch() {
 
   document.getElementById("disclaimer").style.display = "none";
 
-  if (restaurants.length === 0) {
-    document.getElementById("result").innerText = "식당 목록을 불러오는 중입니다...";
-    return;
+  if (restaurantQueue.length === 0) {
+    shuffleQueue(); // 한 바퀴 다 돌았으면 새로 섞음
   }
 
-  let random;
-  do {
-    random = Math.floor(Math.random() * restaurants.length);
-  } while (random === lastPickedIndex && restaurants.length > 1);
-
-  const picked = restaurants[random];
-  lastPickedIndex = random;
+  const picked = restaurantQueue.shift(); // 큐에서 하나 꺼냄
 
   let formattedComment = picked.comment.replace(/\n/g, "<br>");
-  let linkHTML = picked.link ? `<br><a href="${picked.link}" target="_blank">📍지도 보기</a>` : "";
+  let linkHTML = picked.link ? `<br><a href="${picked.link}" target="_blank">📍 지도 보기</a>` : "";
 
   document.getElementById("result").innerHTML = `
     <strong>${picked.name}</strong><br>
