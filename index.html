@@ -41,6 +41,7 @@
 </head>
 <body>
   <h1>🍱 오늘 점심 뭐 먹지?(aSSIST)</h1>
+  <p id="disclaimer">믿어주세요, 업무시간에 만든 것 아닙니다.</p>
   <button onclick="pickLunch()">추천 받기</button>
   <div id="result"></div>
 
@@ -57,6 +58,8 @@
       let lastPickedIndex = -1; // 직전 선택된 인덱스 저장
 
       function pickLunch() {
+        document.getElementById("disclaimer").style.display = "none";
+
   if (restaurants.length === 0) {
     document.getElementById("result").innerText = "식당 목록을 불러오는 중입니다...";
     return;
