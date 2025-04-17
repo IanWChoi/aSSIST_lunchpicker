@@ -56,7 +56,7 @@
 
       let lastPickedIndex = -1; // 직전 선택된 인덱스 저장
 
-function pickLunch() {
+      function pickLunch() {
   if (restaurants.length === 0) {
     document.getElementById("result").innerText = "식당 목록을 불러오는 중입니다...";
     return;
@@ -70,14 +70,16 @@ function pickLunch() {
   const picked = restaurants[random];
   lastPickedIndex = random;
 
+  let formattedComment = picked.comment.replace(/\n/g, "<br>");
   let linkHTML = picked.link ? `<br><a href="${picked.link}" target="_blank">📍 링크 보기</a>` : "";
 
   document.getElementById("result").innerHTML = `
     <strong>${picked.name}</strong><br>
-    <em>${picked.comment}</em>
+    <em>${formattedComment}</em>
     ${linkHTML}
   `;
 }
+
 
 
   </script>
