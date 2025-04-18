@@ -56,7 +56,11 @@ function pickLunch() {
   if (disclaimer) {
     disclaimer.style.display = "none";
   }
-
+  const countElement = document.getElementById("restaurant-count");
+  if (countElement) {
+    countElement.style.display = "none";
+  }
+  
   if (restaurantQueue.length === 0) {
     shuffleQueue(); // 한 바퀴 다 돌았으면 새로 섞음
   }
