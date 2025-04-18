@@ -9,6 +9,12 @@ fetch('restaurants.json')
   .then(data => {
     restaurants = data;
     shuffleQueue(); // 처음 로딩 시 셔플 큐 생성
+
+    // 식당 수 표시
+    const countElement = document.getElementById("restaurant-count");
+    if (countElement) {
+      countElement.innerText = `현재 총 ${restaurants.length}개의 식당이 준비되어 있습니다.`;
+    }
   });
 
 // Fisher-Yates 셔플로 queue 생성
@@ -46,7 +52,10 @@ function handleRapidClick() {
 function pickLunch() {
   if (handleRapidClick()) return;
 
-  document.getElementById("disclaimer").style.display = "none";
+  const disclaimer = document.getElementById("disclaimer");
+  if (disclaimer) {
+    disclaimer.style.display = "none";
+  }
 
   if (restaurantQueue.length === 0) {
     shuffleQueue(); // 한 바퀴 다 돌았으면 새로 섞음
@@ -54,8 +63,8 @@ function pickLunch() {
 
   const picked = restaurantQueue.shift(); // 큐에서 하나 꺼냄
 
-  let formattedComment = picked.comment.replace(/\n/g, "<br>");
-  let linkHTML = picked.link ? `<br><a href="${picked.link}" target="_blank">📍 지도 보기</a>` : "";
+  const formattedComment = picked.comment.replace(/\n/g, "<br>");
+  const linkHTML = picked.link ? `<br><a href="${picked.link}" target="_blank">📍 지도 보기</a>` : "";
 
   document.getElementById("result").innerHTML = `
     <strong>${picked.name}</strong><br>
