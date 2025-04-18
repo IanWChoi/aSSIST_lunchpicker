@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>카페 추천 머신</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fffaf5;
+      text-align: center;
+      padding: 50px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 12px 24px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+    }
+
+    #result {
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #cafe-count {
+      color: gray;
+      margin-bottom: 10px;
+    }
+
+    #lunch-button {
+      margin-top: 40px;
+      background-color: #f3f3f3;
+    }
+  </style>
+</head>
+<body>
+  <h1>☕ 커피는 어디서?(aSSIST)</h1>
+  <p id="cafe-count"></p>
+  <button onclick="pickCafe()">카페 추천 받기</button>
+  <div id="result"></div>
+  <button id="lunch-button" onclick="goToLunch()" style="margin-top: 60px; font-size: 0.9rem;">
+    🍱 다시 밥 먹으러 가기
+  </button>
+  <script src="cafe.js"></script>
+</body>
+</html>

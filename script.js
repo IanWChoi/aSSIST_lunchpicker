@@ -82,4 +82,15 @@ function pickLunch() {
     <em>${formattedComment}</em>
     ${linkHTML}
   `;
+
+  // 버튼 보이게 하기
+const cafeButton = document.getElementById("cafe-button");
+if (cafeButton) {
+  cafeButton.style.display = "inline-block";
+}
+
+}
+
+function goToCafe() {
+  window.location.href = "cafe.html";
 }
