@@ -94,3 +94,8 @@ if (cafeButton) {
 function goToCafe() {
   window.location.href = "cafe.html";
 }
+
+function goToHome() {
+  // 페이지를 새로고침하여 첫 화면 상태로 돌아가기
+  window.location.reload();
+}

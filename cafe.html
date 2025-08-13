@@ -16,6 +16,12 @@
     h1 {
       font-size: 2rem;
       margin-bottom: 20px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    h1:hover {
+      color: #0077cc;
     }
 
     button {
@@ -50,16 +56,39 @@
       margin-top: 40px;
       background-color: #f3f3f3;
     }
+
+    #logo {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.8;
+      z-index: 1000;
+    }
+
+    #logo:hover {
+      opacity: 1;
+    }
+
+    #logo img {
+      height: 50px;
+      width: auto;
+    }
   </style>
 </head>
 <body>
-  <h1>☕ 커피는 어디서?(aSSIST)</h1>
+  <h1 onclick="goToCafeHome()">☕ 커피는 어디서?(aSSIST)</h1>
   <p id="cafe-count"></p>
   <button onclick="pickCafe()">카페 추천 받기</button>
   <div id="result"></div>
   <button id="lunch-button" onclick="goToLunch()" style="margin-top: 60px; font-size: 0.9rem;">
     🍱 다시 밥 먹으러 가기
   </button>
+  
+  <div id="logo">
+    <img src="assist-logo.png" alt="aSSIST 로고">
+  </div>
+  
   <script src="cafe.js"></script>
 </body>
 </html>
