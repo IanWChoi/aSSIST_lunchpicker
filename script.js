@@ -63,9 +63,7 @@ function pickLunch() {
   
   if (restaurantQueue.length === 0) {
     alert(
-      `지금까지 총 ${restaurants.length}개의 식당을 모두 보셨습니다!\n\n` +
-      `아직 고르지 못하셨다면 앞으로 더 발전하는 머신이 되겠습니다!\n` +
-      `aSSIST 주변 맛있는 식당 제보는 wschoi@assist.ac.kr로 연락 부탁드립니다~`
+      `지금까지 총 ${restaurants.length}개의 식당을 모두 보셨습니다!\n\n`
     );
 
 
