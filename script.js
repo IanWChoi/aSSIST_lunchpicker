@@ -39,7 +39,7 @@ function handleRapidClick() {
   }
 
   if (clickCount >= 10) {
-    alert("좀 읽고 누르시고 계신건지 궁금합니다");
+    alert("점심식사는 중대사안입니다. 천천히 고민하십시오.");
     clickCount = 0;
     clearTimeout(clickTimer);
     clickTimer = null;
